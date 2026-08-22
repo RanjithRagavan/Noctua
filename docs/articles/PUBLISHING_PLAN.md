@@ -10,6 +10,7 @@ Repo: https://github.com/RanjithRagavan/Noctua
 | `hackernoon_privacy_first_health_ai.md` | HackerNoon | Deep technical: API design, feature engineering, reflection bridge, ExecuTorch export |
 | `substack_newsletter.md` | Substack | Personal/newsletter voice: the privacy argument + what shipped |
 | `hackernews_show_hn.md` | **Hacker News** | Show HN submission package: title, first comment, timing & rules (HN hosts no articles — the repo + first comment *is* the post) |
+| `social_launch_posts.md` | X + LinkedIn | Launch-day posts timed to the Show HN hour, with a minute-by-minute timeline |
 
 (Original ask mentioned “Hackerrank” → confirmed the target is **Hacker News**
 — `hackernews_show_hn.md`. The HackerNoon draft stays as an extra venue.)
