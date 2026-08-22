@@ -14,6 +14,14 @@ readiness forecast — **without your health data ever leaving the phone**.
 
 ---
 
+## Screenshots
+
+| Dashboard | AI Coach (on-device) | Connect |
+|:---:|:---:|:---:|
+| ![Dashboard — score rings, readiness forecast, 14-day trend](docs/screenshots/dashboard.png) | ![AI Coach — explainable insights generated on-device](docs/screenshots/ai_coach.png) | ![Connect — PAT or OAuth2 sign-in](docs/screenshots/connect.png) |
+
+*Captured from the example app running in demo mode on a Pixel 7 Pro emulator.*
+
 ## Why Noctua?
 
 Most wearable companion apps ship your biometric history to a cloud LLM to
@@ -159,7 +167,8 @@ cd Noctua
 
 The app boots into **demo mode** with a deterministic 21-day dataset, so you
 can evaluate the full UX — score rings, trend chart, forecast card, AI coach —
-before connecting a real ring.
+before connecting a real ring. The [screenshots above](#screenshots) show
+exactly what demo mode renders.
 
 ## Roadmap
 

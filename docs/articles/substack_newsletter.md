@@ -30,6 +30,10 @@ itself:
 4. It ships with a Compose example app that works in demo mode — no ring, no
    account, no token required — so you can judge the UX in two minutes.
 
+![Noctua's dashboard: readiness, sleep and activity rings with an on-device forecast of tomorrow's readiness](https://raw.githubusercontent.com/RanjithRagavan/Noctua/main/docs/screenshots/dashboard.png)
+
+*This is what "on-device" looks like: score rings, a forecast of tomorrow's readiness, and a coach feed — all computed locally, in airplane mode if you want.*
+
 The design rule was simple: **raw biometrics never leave the device.** Not
 because cloud AI is useless, but because health data should default to local
 and only travel with explicit, revocable consent. On-device runtimes finally

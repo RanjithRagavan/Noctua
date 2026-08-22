@@ -14,6 +14,10 @@ So I built the thing I wanted: **Noctua** 🦉 — an open-source Android SDK th
 
 Repo: https://github.com/RanjithRagavan/Noctua
 
+![The Noctua example app: score rings, tomorrow's readiness forecast, and a 14-day readiness trend — rendered in demo mode](https://raw.githubusercontent.com/RanjithRagavan/Noctua/main/docs/screenshots/dashboard.png)
+
+*The example app's dashboard. Every number on this screen was computed on-device.*
+
 ## The architecture in one picture
 
 Noctua is three Gradle modules:
@@ -44,6 +48,10 @@ println(report.forecastedReadiness)      // 74 — tomorrow's predicted readines
 report.insights.forEach { println(it.title) }
 // "Sleep debt accumulating", "HRV below your baseline", ...
 ```
+
+![The AI Coach feed: explainable insights with confidence scores, generated on-device](https://raw.githubusercontent.com/RanjithRagavan/Noctua/main/docs/screenshots/ai_coach.png)
+
+*What the AI Coach feed renders: each card is one rule firing on real features, with its confidence shown.*
 
 Every insight is traceable to the features that triggered it — no black box, no hallucinated medical advice, because the rules are deterministic and unit-tested.
 

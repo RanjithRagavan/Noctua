@@ -129,6 +129,8 @@ own history for personalization — the contract doesn't change.
 
 ## 5. Results and what's next
 
+![Noctua dashboard (left) and on-device AI Coach feed (right), running in demo mode](https://raw.githubusercontent.com/RanjithRagavan/Noctua/main/docs/screenshots/dashboard.png)
+
 - Full Gradle build green: 16 unit tests, example APK (~17 MB) assembles cleanly
 - Forecast + insights compute in milliseconds, offline, with zero data egress
 - Next: on-device LLM sleep coach via the ExecuTorch Llama runner, nightly

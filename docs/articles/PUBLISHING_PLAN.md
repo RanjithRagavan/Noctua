@@ -25,9 +25,9 @@ kind of technical piece. Say the word if you meant something else.)
 
 ## Before publishing — do these once
 
-- [ ] Run the example app on a device/emulator, capture 2–3 screenshots
-      (dashboard rings, AI coach feed, connect screen), add them to
-      `docs/screenshots/` in the repo and embed in each article.
+- [x] Run the example app on a device/emulator, capture screenshots
+      (dashboard rings, AI coach feed, connect screen) — **done**, in
+      `docs/screenshots/` and embedded in all three articles.
 - [ ] If you have an Oura ring: connect a real token and capture one real
       insight card — authentic data beats demo data in screenshots.
 - [ ] Add the article URLs back into the repo README once live.
