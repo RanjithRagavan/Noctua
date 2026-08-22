@@ -9,14 +9,16 @@ Repo: https://github.com/RanjithRagavan/Noctua
 | `medium_on_device_ai_oura.md` | Medium | Story-first: why I stopped pasting my ring data into a chatbot; build walkthrough with snippets |
 | `hackernoon_privacy_first_health_ai.md` | HackerNoon | Deep technical: API design, feature engineering, reflection bridge, ExecuTorch export |
 | `substack_newsletter.md` | Substack | Personal/newsletter voice: the privacy argument + what shipped |
+| `hackernews_show_hn.md` | **Hacker News** | Show HN submission package: title, first comment, timing & rules (HN hosts no articles — the repo + first comment *is* the post) |
 
-(“Hackerrank” in the original ask is a coding-challenge platform without a
-blogging surface — the draft targets HackerNoon, the standard venue for this
-kind of technical piece. Say the word if you meant something else.)
+(Original ask mentioned “Hackerrank” → confirmed the target is **Hacker News**
+— `hackernews_show_hn.md`. The HackerNoon draft stays as an extra venue.)
 
 ## Suggested publishing sequence
 
-1. **HackerNoon first** — their review cycle adds editorial credibility you can
+0. **Hacker News (Show HN)** — Tue–Thu 8–10 AM ET, links straight to the repo.
+   Highest-leverage single post; see `hackernews_show_hn.md` for the package.
+1. **HackerNoon** — their review cycle adds editorial credibility you can
    cite later.
 2. **Medium** 3–4 days later — canonical link back to HackerNoon to avoid SEO
    cannibalization; submit to *Better Programming* or *Android Dev* pubs.
