@@ -25,10 +25,19 @@ itself:
    target, HRV deviation against *your* baseline, readiness trend — not
    population averages.
 3. It predicts tomorrow's readiness score with a neural network that runs
-   on-device via **ExecuTorch** (PyTorch's mobile runtime), and explains its
-   advice with readable rules instead of LLM vibes.
+   on-device via **ExecuTorch** (PyTorch's mobile runtime) — and this isn't a
+   "bring your own runtime" promise: the example app **bundles
+   `executorch-android` and the pre-exported `.pte` model**, so the neural
+   forecaster works on first launch. The forecast card even shows a
+   "neural · ExecuTorch" badge so you know which engine answered. The whole
+   model is a few kilobytes — small by design, because eight physiological
+   signals don't need a transformer — and the repo includes the PyTorch
+   script that generated it, so you can retrain it on your own history.
 4. It ships with a Compose example app that works in demo mode — no ring, no
-   account, no token required — so you can judge the UX in two minutes.
+   account, no token required — so you can judge the UX in two minutes. And
+   if you're the kind of reader who wants to see every formula from raw ring
+   JSON to on-screen forecast, there's a full trace in the repo:
+   `docs/HOW_THE_AI_WORKS.md`.
 
 ![Noctua's dashboard: readiness, sleep and activity rings with an on-device forecast of tomorrow's readiness](https://raw.githubusercontent.com/RanjithRagavan/Noctua/main/docs/screenshots/dashboard.png)
 

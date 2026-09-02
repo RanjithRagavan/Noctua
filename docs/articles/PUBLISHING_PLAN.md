@@ -6,12 +6,15 @@ Repo: https://github.com/RanjithRagavan/Noctua
 
 | File | Platform | Angle |
 |---|---|---|
-| `medium_on_device_ai_oura.md` | Medium | Story-first: why I stopped pasting my ring data into a chatbot; build walkthrough with snippets |
+| `medium_on_device_ai_oura.md` | Medium | Story-first: why I stopped pasting my ring data into a chatbot; build walkthrough with snippets; expanded ExecuTorch section |
 | `hackernoon_privacy_first_health_ai.md` | HackerNoon | Deep technical: API design, feature engineering, reflection bridge, ExecuTorch export |
 | `substack_newsletter.md` | Substack | Personal/newsletter voice: the privacy argument + what shipped |
 | `hackernews_show_hn.md` | **Hacker News** | Show HN submission package: title, first comment, timing & rules (HN hosts no articles — the repo + first comment *is* the post) |
 | `social_launch_posts.md` | X + LinkedIn | Launch-day posts timed to the Show HN hour, with a minute-by-minute timeline |
 | `linkedin_article.md` | LinkedIn Article | Long-form (~1,200 words) professional piece — publish 1–2 days after launch to amplify momentum |
+| `newsletter_submissions.md` | Android/Kotlin Weekly, ProAndroidDev, Mobile Dev Weekly | Ready-to-send newsletter submission blurbs + order |
+| `proandroiddev_submission_email.md` | ProAndroidDev editors | Submission email for the Medium post |
+| `PROMOTION_CHANNELS.md` | Master playbook | Tiered channel tables, rules, realistic outcomes, 3-week calendar |
 
 (Original ask mentioned “Hackerrank” → confirmed the target is **Hacker News**
 — `hackernews_show_hn.md`. The HackerNoon draft stays as an extra venue.)
@@ -32,8 +35,17 @@ Repo: https://github.com/RanjithRagavan/Noctua
 - [x] Run the example app on a device/emulator, capture screenshots
       (dashboard rings, AI coach feed, connect screen) — **done**, in
       `docs/screenshots/` and embedded in all three articles.
-- [ ] If you have an Oura ring: connect a real token and capture one real
-      insight card — authentic data beats demo data in screenshots.
+- [x] Connect a real Oura account via OAuth — **done** on emulator
+      ("Connected: 9 readiness, 9 sleep, 11 activity, 13 periods"); the live
+      pipeline works end-to-end. Decision: keep **demo-mode screenshots**
+      for all public articles (never publish real health data).
+- [x] ExecuTorch end-to-end — **done**: example app bundles
+      `executorch-android:1.4.0` + pre-exported `readiness_forecaster.pte`,
+      forecast card shows "neural · ExecuTorch". All article drafts updated
+      to highlight this (Sep 1 refresh).
+- [x] Deep-dive doc — **done**: `docs/HOW_THE_AI_WORKS.md` (formulas +
+      .pte execution stack); now referenced from Medium, Substack, HN first
+      comment, and LinkedIn drafts.
 - [ ] Add the article URLs back into the repo README once live.
 - [ ] Enable GitHub Discussions on the repo (credibility + community surface).
 

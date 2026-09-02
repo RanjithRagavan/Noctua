@@ -55,20 +55,29 @@ report.insights.forEach { println(it.title) }
 
 Every insight is traceable to the features that triggered it — no black box, no hallucinated medical advice, because the rules are deterministic and unit-tested.
 
-## The neural part: ExecuTorch
+## The neural part: ExecuTorch, out of the box
 
-For the readiness forecast I exported a tiny MLP (8 → 32 → 16 → 1, runs in single-digit milliseconds) to a `.pte` program:
+This is the part I want to underline, because "on-device AI" usually means "good luck integrating it." With Noctua it doesn't:
+
+**The example app already ships the ExecuTorch runtime (`org.pytorch:executorch-android:1.4.0`) and the pre-exported `readiness_forecaster.pte`.** Clone, build, and the neural forecaster is running — the forecast card literally shows a **"neural · ExecuTorch"** badge when the .pte model produced the prediction, and "linear fallback" if the runtime were ever missing. No setup, no model downloads, no server.
+
+The model itself is deliberately tiny — an 8 → 32 → 16 → 1 MLP, exported from PyTorch, and the resulting `.pte` is only a few kilobytes. People are surprised an "AI model" can be 6 KB; the answer is that the .pte isn't a compressed giant, it's the *whole* model — the architecture is small by design, because 8 physiological features don't need a transformer. The base model is defined and warm-started in PyTorch (`model/export_readiness_forecaster.py`), then exported through the ExecuTorch path:
 
 ```bash
 cd model && pip install torch executorch
-python export_readiness_forecaster.py   # → readiness_forecaster.pte
+python export_readiness_forecaster.py
+# torch.export → to_edge → to_executorch → readiness_forecaster.pte
 ```
 
 ```kotlin
 val ai = NoctuaAI(forecaster = ExecuTorchForecaster(pteFile.absolutePath))
 ```
 
-The ExecuTorch runtime is loaded reflectively: apps that ship `org.pytorch:executorch-android` get neural inference; everyone else silently falls back to a transparent linear model. The library compiles and passes its 16 unit tests either way.
+The contract is `float32 [1,8] → [1,1]` (readiness in 0–100), so you can retrain the base model on a user's own history and drop in the new .pte without touching app code — personalization as a local file, not a cloud subscription.
+
+Inside the library, the ExecuTorch runtime is still bridged reflectively: apps that ship `org.pytorch:executorch-android` get neural inference; everyone else silently falls back to a transparent linear model. The library compiles and passes its unit tests either way — dependency optionality without dependency hell.
+
+📖 If you want the full "how does a number become a prediction" trace — every formula from raw Oura JSON through feature extraction to each layer of the .pte execution stack — I wrote it up in the repo: **[docs/HOW_THE_AI_WORKS.md](https://github.com/RanjithRagavan/Noctua/blob/main/docs/HOW_THE_AI_WORKS.md)**.
 
 ## Why this matters beyond one app
 
@@ -78,4 +87,4 @@ Try it, fork it, break it: **https://github.com/RanjithRagavan/Noctua**
 
 ---
 
-*Setup from zero to running app: clone → `./gradlew :example-app:installDebug` → demo mode works immediately; paste a Personal Access Token in the Connect tab for live data. Full instructions in the README.*
+*Setup from zero to running app: clone → `./gradlew :example-app:installDebug` → demo mode works immediately with the neural forecaster live. For live data, the Connect tab supports both OAuth2 sign-in (drop your client ID in `local.properties` as `OURA_CLIENT_ID=...` — the secret stays out of the APK entirely) and a Personal Access Token. Full instructions in the README.*

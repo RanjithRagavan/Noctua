@@ -113,6 +113,14 @@ class ExecuTorchForecaster(private val modelPath: String) : ReadinessForecaster 
 returns *something* — the `LinearHeuristicForecaster` guarantees a forecast
 with ≥3 days of history even with no ML runtime at all.
 
+Note the split: the *library* keeps ExecuTorch optional via the reflective
+bridge, but the **example app ships `org.pytorch:executorch-android:1.4.0`
+and the pre-exported `readiness_forecaster.pte` by default** — so anyone who
+clones the repo gets real neural inference on first launch, with a
+"neural · ExecuTorch" badge on the forecast card showing which engine
+answered. Fallback exists so *your* app can choose, not so the demo can
+cheat.
+
 ## 4. Exporting the model
 
 `model/export_readiness_forecaster.py` warm-starts a tiny MLP on a synthetic
@@ -131,8 +139,16 @@ own history for personalization — the contract doesn't change.
 
 ![Noctua dashboard (left) and on-device AI Coach feed (right), running in demo mode](https://raw.githubusercontent.com/RanjithRagavan/Noctua/main/docs/screenshots/dashboard.png)
 
-- Full Gradle build green: 16 unit tests, example APK (~17 MB) assembles cleanly
+- Full Gradle build green: unit tests pass, example APK (~17 MB) assembles cleanly
+- Verified against a live Oura account over OAuth2: readiness, sleep, activity,
+  and detailed sleep periods all flow through the pipeline end-to-end
 - Forecast + insights compute in milliseconds, offline, with zero data egress
+- The example app bundles `executorch-android:1.4.0` + the pre-exported
+  `.pte` — the "neural · ExecuTorch" badge on the forecast card confirms which
+  engine answered
+- Want every formula? `docs/HOW_THE_AI_WORKS.md` in the repo traces one real
+  data point from Oura JSON through feature extraction to each layer of the
+  .pte execution stack
 - Next: on-device LLM sleep coach via the ExecuTorch Llama runner, nightly
   on-device fine-tuning, Health Connect write-back
 

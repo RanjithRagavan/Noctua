@@ -32,7 +32,7 @@ Three Gradle modules make this concrete:
 
 **`noctua-ai`** is where the interesting engineering lives. It distills three weeks of ring data into a small set of normalized signals — cumulative sleep debt against your target, last night's HRV expressed as a z-score against *your own* 14-night baseline, the least-squares trend of your readiness scores, temperature deviation. Two engines consume them: an explainable heuristic engine (every insight literally names the feature that triggered it), and a neural readiness forecaster that predicts tomorrow's score via **ExecuTorch**, PyTorch's on-device runtime.
 
-One detail I'm particularly happy with: the ExecuTorch runtime is bridged reflectively. Apps that ship `org.pytorch:executorch-android` get neural inference; apps that don't silently fall back to a transparent linear model. The library compiles, tests, and runs either way — dependency optionality without dependency hell.
+Two details I'm particularly happy with. First, the example app **bundles the ExecuTorch runtime (`org.pytorch:executorch-android:1.4.0`) and the pre-exported `readiness_forecaster.pte` out of the box** — clone and build, and the neural forecaster is already running, with a "neural · ExecuTorch" badge on the forecast card so you can see exactly which engine produced the prediction. Second, inside the library the runtime is bridged reflectively: apps that ship ExecuTorch get neural inference; apps that don't silently fall back to a transparent linear model. The library compiles, tests, and runs either way — dependency optionality without dependency hell.
 
 **`example-app`** is a Jetpack Compose (Material 3) application with score rings, a 14-day readiness trend chart, a forecast card, and the AI coach feed. It boots into a demo mode driven by a synthetic 21-day dataset — no ring, no account, no token — so anyone can evaluate the UX in two minutes:
 
@@ -81,7 +81,7 @@ That z-score is last night's average HRV measured in standard deviations against
 
 The readiness forecaster is a tiny MLP — 8 inputs, two hidden layers, one output. It runs in single-digit milliseconds and sips memory. The export path is in the repo (`model/export_readiness_forecaster.py`): `torch.export → to_edge → .pte`, with a synthetic warm-start so the artifact works end-to-end out of the box.
 
-I'll be transparent about what it is and isn't: the shipped weights encode a sensible physiological prior, not a clinically validated model. The point of the release is the *architecture* — a working, testable, privacy-preserving pipeline that you can retrain on a user's own history without changing the `float32 [1,8] → [1,1]` contract. Personalization as a local file, not a cloud subscription.
+I'll be transparent about what it is and isn't: the shipped weights encode a sensible physiological prior, not a clinically validated model. The point of the release is the *architecture* — a working, testable, privacy-preserving pipeline that you can retrain on a user's own history without changing the `float32 [1,8] → [1,1]` contract. Personalization as a local file, not a cloud subscription. If you want to trace exactly how a night's data becomes a number on screen — every formula and every layer of the .pte execution stack — I documented it in the repo: `docs/HOW_THE_AI_WORKS.md`.
 
 ## Why I think this matters beyond one project
 

@@ -52,7 +52,18 @@ The repo is three Gradle modules:
   running on ExecuTorch. The ExecuTorch runtime is bridged reflectively, so
   apps without it fall back to a transparent linear model; nothing breaks.
 - `example-app`: Compose/Material 3, boots into demo mode with a synthetic
-  21-day dataset so you can try it without owning a ring.
+  21-day dataset so you can try it without owning a ring. It already bundles
+  `executorch-android:1.4.0` and the pre-exported `readiness_forecaster.pte`,
+  so the neural forecaster runs on first launch — the forecast card shows a
+  "neural · ExecuTorch" badge when the .pte produced the prediction.
+
+The model is deliberately tiny (8→32→16→1 MLP, ~6 KB .pte — the base model is
+defined/warm-started in PyTorch in `model/export_readiness_forecaster.py`,
+then exported via torch.export → to_edge → to_executorch). Contract is
+float32 [1,8] → [1,1], so you can retrain on your own history and swap the
+.pte without touching app code. I also wrote a full trace of one data point
+from Oura JSON to on-screen forecast — every formula and every layer of the
+.pte stack — in docs/HOW_THE_AI_WORKS.md.
 
 Design constraints I held to: raw biometrics never leave the device, every
 insight must be traceable to the features that triggered it (no LLM vibes),

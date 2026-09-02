@@ -29,7 +29,8 @@ What it does:
 
 • Typed Kotlin client for the full Oura API v2 (OAuth2, every endpoint)
 • Computes sleep debt, HRV deviation vs YOUR baseline, readiness trend
-• Predicts tomorrow's readiness — on-device, via ExecuTorch
+• Predicts tomorrow's readiness via ExecuTorch — and the example app SHIPS the runtime + pre-exported .pte, so it runs on first launch
+• The forecast card shows which engine answered: "neural · ExecuTorch" vs linear fallback
 • Every insight is explainable. No LLM vibes.
 ```
 

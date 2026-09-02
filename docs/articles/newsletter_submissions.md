@@ -27,10 +27,14 @@ Noctua — privacy-first Oura Ring SDK: typed Kotlin client + on-device ExecuTor
 Open-source Android SDK that pairs a complete coroutine-first Kotlin client for the
 Oura API v2 (OAuth2, auto-refreshing tokens, every usercollection endpoint) with an
 on-device AI layer: feature extraction, explainable rule-based insights, and a neural
-readiness forecaster exported to ExecuTorch (.pte) with a zero-dependency fallback.
-All inference runs on-device in <5ms — no biometric data ever leaves the phone.
-Ships with a Material 3 Compose example app that runs in demo mode (no ring needed).
-MIT.
+readiness forecaster running on ExecuTorch. The example app bundles the
+executorch-android runtime and the pre-exported .pte model, so neural inference runs
+on first launch — forecast card shows a "neural · ExecuTorch" badge; the library still
+falls back to a transparent linear model if the runtime is absent. Includes the
+PyTorch export script (torch.export → to_edge → .pte) and a full deep-dive doc tracing
+one data point from Oura JSON to on-screen forecast. All inference on-device in
+milliseconds — no biometric data ever leaves the phone. Material 3 Compose example app
+with demo mode (no ring needed). MIT.
 ```
 
 **Week 2 submission (article link):**
@@ -61,8 +65,10 @@ Noctua is an open-source Kotlin toolkit (MIT) that combines:
   Android or any backend.
 - noctua-ai: an on-device intelligence layer — feature extraction (sleep debt,
   HRV z-score vs. personal baseline), an explainable heuristic insight engine,
-  and a neural readiness forecaster bridged to PyTorch's ExecuTorch runtime,
-  with a zero-dependency linear fallback if the runtime is absent.
+  and a neural readiness forecaster bridged to PyTorch's ExecuTorch runtime.
+  The example app bundles executorch-android and the pre-exported .pte model,
+  so neural inference runs on first launch; the library still falls back to a
+  zero-dependency linear model if the runtime is absent.
 - A Material 3 Compose example app with a demo mode that needs no Oura account.
 
 The privacy angle: raw biometric data never leaves the device — all insight
