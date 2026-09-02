@@ -195,9 +195,11 @@ exactly what demo mode renders.
 
 ## Contributing
 
-Issues and PRs welcome. The heuristics in `HeuristicInsightEngine` are
-deliberately readable — improving them with better evidence is a great first
-contribution. Run `./gradlew test` before submitting.
+Issues and PRs welcome — see [CONTRIBUTING.md](CONTRIBUTING.md) for setup,
+ground rules (privacy is the product), and good first contributions. The
+heuristics in `HeuristicInsightEngine` are deliberately readable — improving
+them with better evidence is a great first contribution. Run `./gradlew test`
+before submitting.
 
 ## License
 
