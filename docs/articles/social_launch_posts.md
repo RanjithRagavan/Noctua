@@ -93,7 +93,7 @@ to the HN thread is fine and common.)*
 > Rephrased Sep 2 with ExecuTorch / on-device AI / wellness emphasis.
 
 ```
-I just open-sourced something I've been building: Noctua 🦉 — an on-device AI wellness coach for the Oura Ring, powered by ExecuTorch, PyTorch's on-device runtime.
+I just open-sourced something I've been building for the open-source community: Noctua 🦉 — an on-device AI wellness coach for the Oura Ring, powered by ExecuTorch, PyTorch's on-device runtime.
 
 The story: the Oura app is excellent at measurement — every morning it hands me a readiness score. What it doesn't do is coaching: it never answers "so should I train hard today, or recover?" For that, I found myself pasting my biometrics into a cloud AI chatbot every morning. It worked well — and then I realized I was uploading my nightly HRV, resting heart rate, and body temperature history to answer a question a modern phone can answer entirely on-device.
 
