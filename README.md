@@ -2,10 +2,16 @@
 
 **On-device AI wellness intelligence for Oura Ring — privacy-first Android SDK.**
 
-Noctua (the owl genus — nocturnal wisdom) is an open-source Kotlin toolkit that
-combines a complete, typed client for the **Oura API v2** with an **on-device AI
-layer** that turns raw biometrics into explainable insights and a next-day
-readiness forecast — **without your health data ever leaving the phone**.
+Your ring already measures everything — readiness, sleep, HRV, temperature.
+What the app doesn't do is *coach*: it hands you a score, never an answer to
+"should I train hard today, or recover?" Getting that answer today means
+pasting your biometrics into a cloud chatbot.
+
+Noctua (the owl genus — nocturnal wisdom) closes that gap on-device. It's an
+open-source Kotlin toolkit that combines a complete, typed client for the
+**Oura API v2** with an **on-device AI layer** that turns raw biometrics into
+explainable coaching insights and a next-day readiness forecast — **without
+your health data ever leaving the phone**.
 
 [![Kotlin](https://img.shields.io/badge/Kotlin-2.0-7F52FF?logo=kotlin&logoColor=white)](https://kotlinlang.org)
 [![Compose](https://img.shields.io/badge/Jetpack%20Compose-Material%203-4285F4?logo=jetpackcompose&logoColor=white)](https://developer.android.com/jetpack/compose)
