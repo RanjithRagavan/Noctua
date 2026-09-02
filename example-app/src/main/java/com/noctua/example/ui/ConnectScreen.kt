@@ -25,6 +25,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import com.noctua.core.auth.OuraOAuth
+import com.noctua.example.BuildConfig
 
 /**
  * Two ways in:
@@ -42,7 +43,8 @@ fun ConnectScreen(
     onDemo: () -> Unit,
 ) {
     var token by remember { mutableStateOf("") }
-    var clientId by remember { mutableStateOf("") }
+    // Prefilled from local.properties via BuildConfig (OURA_CLIENT_ID); still editable.
+    var clientId by remember { mutableStateOf(BuildConfig.OURA_CLIENT_ID) }
     val uriHandler = LocalUriHandler.current
 
     Column(

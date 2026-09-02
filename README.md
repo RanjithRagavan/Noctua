@@ -170,6 +170,21 @@ can evaluate the full UX — score rings, trend chart, forecast card, AI coach �
 before connecting a real ring. The [screenshots above](#screenshots) show
 exactly what demo mode renders.
 
+### Connect your own Oura account (optional)
+
+1. Register an OAuth application at
+   [developer.ouraring.com/applications](https://developer.ouraring.com/applications)
+   with redirect URI `noctua://callback` (see `PRIVACY.md` / `TERMS.md` for the
+   policy URLs the form asks for).
+2. Add the client **ID** to `local.properties` (git-ignored):
+   ```properties
+   OURA_CLIENT_ID=YOUR_CLIENT_ID
+   ```
+   The Connect screen is prefilled from this via `BuildConfig`. Never put the
+   client **secret** here — the client-side OAuth flow doesn't need it, and a
+   secret embedded in an APK is not a secret.
+3. Rebuild, open the **Connect** tab, tap **Sign in with Oura**.
+
 ## Roadmap
 
 - [ ] On-device LLM sleep coach (ExecuTorch Llama runner, fully local chat)
