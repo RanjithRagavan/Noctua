@@ -1,5 +1,15 @@
 # Hacker News — Show HN submission package
 
+> **STATUS (Sep 2, 2026): Show HN temporarily restricted on this account.**
+> HN returned: *"We're temporarily restricting Show HNs because of a massive
+> influx… Take some time to get to know the community, become a good
+> contributor, and then it will be fine to post an occasional Show HN."*
+> This is the standard new/low-activity account gate — not a rejection of the
+> project. Regular commenting and link submissions remain open. Follow the
+> **Account warm-up plan** below, then re-submit this package unchanged.
+> Meanwhile the rest of the launch proceeds without HN (see updated sequence
+> in `PROMOTION_CHANNELS.md`).
+
 Hacker News (https://news.ycombinator.com) doesn't host articles — you submit
 a link, and the "article" is your project page plus your first comment. For an
 open-source project like Noctua, the correct format is **Show HN** linking
@@ -7,7 +17,32 @@ directly to the GitHub repo. This file is the ready-to-paste package.
 
 ---
 
-## Submission
+## Account warm-up plan (do this for 3–4 weeks, then re-submit)
+
+The restriction lifts once the account looks like a genuine community member.
+There is no published karma threshold — the signal is *consistent, real
+participation*. Do this:
+
+| Week | Action |
+|---|---|
+| 1–2 | Comment on 2–3 front-page threads per week — technical substance only (Android, on-device ML, wearables, privacy). No links to your own stuff. Aim for comments you'd be proud to have quoted |
+| 1–3 | Submit 1–2 *interesting non-self* links per week (good technical articles you actually read) — submitters with a history of quality links get trusted faster |
+| 2–4 | Reply thoughtfully to comments on your comments; upvote good stories; use the site normally |
+| 4 | Re-submit this Show HN package (Tue–Thu, 8–10 AM ET). If still restricted, wait 1–2 more weeks and repeat |
+
+Hard rules during warm-up: **no self-links, no asking anyone to upvote or
+submit on your behalf, no sockpuppets** — ring detection is aggressive and a
+flagged account may never recover. A friend's established account submitting
+"Show HN" for you is also against the spirit (Show HN is for creators) —
+patience is the only reliable path.
+
+Upside of the delay: by launch time the repo will already have stars, published
+articles (ProAndroidDev/HackerNoon), and possibly newsletter mentions — Show HN
+threads perform *better* when the project visibly has traction.
+
+---
+
+## Submission (ready to paste once the gate lifts)
 
 **URL:** https://github.com/RanjithRagavan/Noctua
 

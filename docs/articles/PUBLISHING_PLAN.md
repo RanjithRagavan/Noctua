@@ -21,14 +21,22 @@ Repo: https://github.com/RanjithRagavan/Noctua
 
 ## Suggested publishing sequence
 
-0. **Hacker News (Show HN)** — Tue–Thu 8–10 AM ET, links straight to the repo.
-   Highest-leverage single post; see `hackernews_show_hn.md` for the package.
+> **Revised Sep 2, 2026:** HN temporarily restricted Show HN on the account
+> (new-account gate). Sequence flipped: articles + social first, Show HN after
+> a 3–4 week account warm-up (`hackernews_show_hn.md`).
+
+0. **Medium + ProAndroidDev email + X thread + LinkedIn** — the launch anchor.
+   Update the Medium post with the latest draft first (bundled ExecuTorch
+   runtime, "neural · ExecuTorch" badge, HOW_THE_AI_WORKS deep dive).
 1. **HackerNoon** — their review cycle adds editorial credibility you can
    cite later.
-2. **Medium** 3–4 days later — canonical link back to HackerNoon to avoid SEO
-   cannibalization; submit to *Better Programming* or *Android Dev* pubs.
-3. **Substack** same week — newsletter to your own list, links to both.
-4. Cross-post a 5-tweet/X thread + LinkedIn post with the score-rings screenshot.
+2. **Substack** same week — newsletter to your own list, links to both.
+3. **Reddit** (r/droidappshowcase, r/SideProject, r/IMadeThis) — staggered
+   over the first two weeks.
+4. **Hacker News (Show HN)** — week 4, after the warm-up plan. By then the
+   repo has stars, published articles, and newsletter mentions, so the thread
+   starts stronger. Tue–Thu 8–10 AM ET, links straight to the repo;
+   see `hackernews_show_hn.md` for the package.
 
 ## Before publishing — do these once
 

@@ -1,7 +1,14 @@
 # Launch-day social posts — X/Twitter + LinkedIn
 
-Timed to go out **the same hour as the Show HN submission** (Tue–Thu,
-8–10 AM US Eastern). Post X thread first, LinkedIn 15–30 min later.
+> **REVISED Sep 2, 2026:** the Show HN is delayed ~3–4 weeks (HN temporarily
+> restricts Show HN on new/low-activity accounts — see `hackernews_show_hn.md`
+> for the warm-up plan). These posts are now the **launch anchor themselves**:
+> post them alongside the ProAndroidDev/Medium push, omit the HN cross-link in
+> X post 5 for now, and add a "we're on Hacker News" quote-tweet + LinkedIn
+> edit when the Show HN eventually lands.
+
+Timed to go out **together, 8–10 AM in your primary timezone** (Tue–Thu).
+Post X thread first, LinkedIn 15–30 min later.
 
 Assets: attach `docs/screenshots/dashboard.png` (score rings + forecast) to
 the first X post and the LinkedIn post. `ai_coach.png` works for reply posts.
@@ -52,10 +59,20 @@ The demo mode needs no ring and no account — a synthetic 21-day dataset drives
 Clone → ./gradlew :example-app:installDebug → running in 2 minutes.
 ```
 
-**Post 5**
+**Post 5** *(launch version — no HN yet)*
 
 ```
-Also on Show HN today — would love your technical questions there:
+Full write-up on Medium (link in reply). Show HN coming once my account clears HN's new-user gate — I'll post the thread here when it lands.
+
+Roadmap: fully local LLM sleep coach (ExecuTorch Llama runner), nightly on-device personalization, Health Connect write-back.
+
+⭐ the repo if this resonates — it's how independent open source gets seen.
+```
+
+**Post 5** *(hold this variant for the week-4 Show HN wave)*
+
+```
+Noctua is on Show HN today — would love your technical questions there:
 [HN thread URL — paste after submitting]
 
 Roadmap: fully local LLM sleep coach (ExecuTorch Llama runner), nightly on-device personalization, Health Connect write-back.
@@ -97,15 +114,23 @@ I'd genuinely value your feedback — especially from folks working in wearables
 
 ---
 
-## Launch-hour timeline (all US Eastern)
+## Launch-hour timeline (all US Eastern) — wave 1, no HN
 
 | Time | Action |
 |---|---|
-| T-1 day | Warm up HN account (a few genuine comments); schedule nothing — HN requires manual submission |
+| T-1 day | Confirm Medium paywall OFF + featured image renders; finalize X post 1's screenshot |
+| 8:00 AM | Post X thread (posts 1–5, launch version) |
+| 8:30 AM | Post LinkedIn |
+| 8:00–11:00 AM | Reply to X/LinkedIn comments; email ProAndroidDev |
+| 6:00 PM | Thank-you reply on X with any fun stat (stars, comments) |
+| T+1 day | Log evidence for EB1A: screenshots of engagement, star count, any pickups |
+
+## Week-4 wave — when the Show HN gate lifts
+
+| Time | Action |
+|---|---|
 | 8:00 AM | Submit Show HN (title + repo URL from `hackernews_show_hn.md`) |
 | 8:01 AM | Paste first comment on the HN thread |
-| 8:05 AM | Post X thread (posts 1–5), with HN link added to post 5 |
-| 8:30 AM | Post LinkedIn |
-| 8:00–11:00 AM | Answer every HN comment within minutes; reply to X/LinkedIn comments |
-| 6:00 PM | Thank-you reply on X with any fun stat (stars, comments) |
-| T+1 day | Log evidence for EB1A: screenshots of HN rank/comments, star count, any press pickups |
+| 8:05 AM | Quote-tweet the launch thread with the HN link (held variant of post 5); edit the LinkedIn article to add the HN thread link |
+| 8:00 AM–2:00 PM | Answer every HN comment within minutes — engagement velocity keeps a Show HN alive |
+| T+1 day | Log evidence: HN rank/points/comments screenshots, star-count jump |

@@ -14,9 +14,9 @@ Master list of every realistic channel for promoting **Noctua** (github.com/Ranj
 
 | Channel | What to post | Mechanism | Timing | Rules / gotchas | Realistic outcome | Status |
 |---|---|---|---|---|---|---|
-| **Hacker News — Show HN** | `Show HN: Noctua – On-device AI coach for your Oura ring (ExecuTorch on Android)` linking to the GitHub repo | Submit at news.ycombinator.com/submit with your own account | Tue–Thu, **8–10 AM US Eastern** (catches US morning + EU afternoon). Avoid weekends and major news days | Title must be factual, no clickbait. First comment from you explaining the tech (ExecuTorch .pte, OAuth, OAuth-free library design). Reply to every comment in the first 6 hours. Do NOT ask friends to upvote — ring voting gets posts killed | 10–40 points typical for a good Show HN; 100+ = front page = 5–15k repo visits, 100–500 stars | Draft ready (`articles/HN_SHOW_HN.md`) |
-| **X / Twitter thread** | 6–8 tweet thread: hook → problem → demo GIF → ExecuTorch architecture → "it's MIT, contributions welcome" → repo link | Post from your account | Same hour as Show HN; quote-tweet it again next morning for other timezones | Native video/GIF of the app demo outperforms links. Tag @ouraring (low chance of reply, zero cost), use #AndroidDev #ExecuTorch #QuantifiedSelf sparingly | 5k–50k impressions if picked up by Android dev accounts; main value is screenshots for articles later | Draft ready |
-| **LinkedIn post + article** | Post: short launch note with demo GIF and repo link. Article: the long-form technical story (already drafted) | Post natively on LinkedIn | Same day, 8–10 AM in your primary network's timezone | LinkedIn suppresses external links in-body — put the repo link in the first comment too. Ask 2–3 colleagues for early comments (comments weigh more than likes) | 1k–10k views; strong EB1A evidence because it's tied to your real name and professional identity | Article draft ready |
+| **Hacker News — Show HN** | `Show HN: Noctua – On-device AI coach for your Oura ring (ExecuTorch on Android)` linking to the GitHub repo | Submit at news.ycombinator.com/submit with your own account | Tue–Thu, **8–10 AM US Eastern** — **⚠ DELAYED ~3–4 weeks: account hit HN's new-user Show HN restriction (Sep 2). Follow the warm-up plan in `hackernews_show_hn.md` first** | Title must be factual, no clickbait. First comment from you explaining the tech (ExecuTorch .pte, OAuth, OAuth-free library design). Reply to every comment in the first 6 hours. Do NOT ask friends to upvote — ring voting gets posts killed. New/low-activity accounts are temporarily blocked from Show HN — warm up the account with genuine comments/submissions first | 10–40 points typical for a good Show HN; 100+ = front page = 5–15k repo visits, 100–500 stars | Package ready (`hackernews_show_hn.md`); **blocked until account warm-up completes** |
+| **X / Twitter thread** | 6–8 tweet thread: hook → problem → demo GIF → ExecuTorch architecture → "it's MIT, contributions welcome" → repo link | Post from your account | **Now the launch-day anchor** (previously timed to Show HN). Post alongside the ProAndroidDev/Medium push instead; re-post a "we're on HN" quote-tweet when the Show HN eventually lands | Native video/GIF of the app demo outperforms links. Tag @ouraring (low chance of reply, zero cost), use #AndroidDev #ExecuTorch #QuantifiedSelf sparingly | 5k–50k impressions if picked up by Android dev accounts; main value is screenshots for articles later | Draft ready — post 5's HN cross-link now waits for the delayed Show HN |
+| **LinkedIn post + article** | Post: short launch note with demo GIF and repo link. Article: the long-form technical story (already drafted) | Post natively on LinkedIn | Same day as the X thread, 8–10 AM in your primary network's timezone | LinkedIn suppresses external links in-body — put the repo link in the first comment too. Ask 2–3 colleagues for early comments (comments weigh more than likes) | 1k–10k views; strong EB1A evidence because it's tied to your real name and professional identity | Article draft ready |
 
 ---
 
@@ -57,16 +57,17 @@ Master list of every realistic channel for promoting **Noctua** (github.com/Ranj
 
 ---
 
-## 3-week calendar
+## 4-week calendar (revised Sep 2 — HN delayed by account restriction)
 
 | Day | Action |
 |---|---|
-| **Day 0 (prep, before launch)** | GitHub topics + good-first-issues + CONTRIBUTING; warm up Product Hunt account; verify Medium paywall OFF; convert long code blocks in the Medium post to gists; record the demo video |
-| **Day 1 (launch)** | 8–10 AM ET: Show HN + X thread + LinkedIn post, same hour. Reply to every HN comment for 6+ hours |
-| **Day 2–3** | Email ProAndroidDev; post r/droidappshowcase; submit HackerNoon draft |
-| **Day 4–7** | r/SideProject; cross-post dev.to (canonical set); submit Substack issue; post in Kotlin Slack |
-| **Week 2** | r/IMadeThis; Hashnode cross-post; DM r/ouraring mods; submit Android Weekly + Kotlin Weekly links; upload YouTube demo; QS forum post |
-| **Week 3+** | awesome-list PRs; r/QuantifiedSelf; schedule Product Hunt for a Tue–Thu once v0.2 is ready; keep answering r/androiddev weekly threads |
+| **Day 0 (prep, before launch)** | GitHub topics + good-first-issues + CONTRIBUTING; warm up Product Hunt account; **start HN account warm-up** (2–3 genuine comments/week on front-page threads + 1–2 non-self link submissions — see `hackernews_show_hn.md`); verify Medium paywall OFF; convert long code blocks in the Medium post to gists; record the demo video |
+| **Day 1 (launch, no HN)** | 8–10 AM ET: X thread + LinkedIn post, same hour (post 5's HN cross-link omitted for now). Email ProAndroidDev |
+| **Day 2–3** | Post r/droidappshowcase; submit HackerNoon draft |
+| **Day 4–7** | r/SideProject; cross-post dev.to (canonical set); publish Substack issue; post in Kotlin Slack |
+| **Week 2** | r/IMadeThis; Hashnode cross-post; DM r/ouraring mods; submit Android Weekly + Kotlin Weekly links; upload YouTube demo; QS forum post. **Continue HN warm-up** |
+| **Week 3** | awesome-list PRs; r/QuantifiedSelf; keep answering r/androiddev weekly threads. **Continue HN warm-up** |
+| **Week 4 (second wave)** | **Submit the Show HN** (Tue–Thu 8–10 AM ET) — the repo now has stars, published articles, and newsletter mentions, so the thread starts stronger. Quote-tweet it on X, add the HN link to the LinkedIn article as an edit. Schedule Product Hunt for a Tue–Thu once v0.2 is ready |
 
 ---
 
