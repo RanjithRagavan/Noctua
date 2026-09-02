@@ -51,7 +51,7 @@ fun DashboardScreen(state: NoctuaUiState) {
         ScoreRingRow(state)
 
         state.report?.forecastedReadiness?.let { forecast ->
-            ForecastCard(forecast, state.snapshot.latestReadiness?.score)
+            ForecastCard(forecast, state.snapshot.latestReadiness?.score, state.forecasterLabel)
         }
 
         ReadinessTrendCard(state)
@@ -112,7 +112,7 @@ fun ScoreRing(label: String, score: Int?, color: Color) {
 }
 
 @Composable
-private fun ForecastCard(forecast: Int, today: Int?) {
+private fun ForecastCard(forecast: Int, today: Int?, engineLabel: String) {
     Card(modifier = Modifier.fillMaxWidth()) {
         Column(Modifier.padding(16.dp)) {
             Text(
@@ -136,7 +136,7 @@ private fun ForecastCard(forecast: Int, today: Int?) {
                 }
             }
             Text(
-                "Predicted on-device by Noctua AI — your data never left this phone.",
+                "Predicted on-device by Noctua AI ($engineLabel) — your data never left this phone.",
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f),
             )

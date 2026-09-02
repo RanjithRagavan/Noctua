@@ -125,6 +125,14 @@ report.insights.forEach { println("• ${it.title} (${it.confidence}%)") }
 
 ### 5. Go neural with ExecuTorch
 
+The example app already bundles the ExecuTorch runtime
+(`org.pytorch:executorch-android:1.4.0`) and the pre-exported
+`readiness_forecaster.pte` — the forecast card literally shows
+"neural · ExecuTorch" when the on-device model produced the prediction,
+and "linear fallback" if the runtime were ever unavailable.
+
+To export the model yourself (or retrain it):
+
 ```bash
 cd model
 pip install torch executorch

@@ -51,8 +51,9 @@ dependencies {
     implementation(project(":noctua-core"))
     implementation(project(":noctua-ai"))
 
-    // Optional: ship the ExecuTorch runtime to enable the neural forecaster.
-    // implementation("org.pytorch:executorch-android:1.0.0")
+    // ExecuTorch on-device runtime — powers the neural readiness forecaster.
+    // The app still works without it (linear fallback), but it ships by default.
+    implementation(libs.executorch.android)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.activity.compose)
