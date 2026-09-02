@@ -88,28 +88,31 @@ to the HN thread is fine and common.)*
 
 ## LinkedIn post *(attach dashboard.png)*
 
+> Rephrased Sep 2 with ExecuTorch / on-device AI / wellness emphasis.
+
 ```
-I just open-sourced something I've been building: Noctua 🦉 — on-device AI wellness intelligence for the Oura Ring.
+I just open-sourced something I've been building: Noctua 🦉 — an on-device AI wellness coach for the Oura Ring, powered by ExecuTorch, PyTorch's on-device runtime.
 
-The story: every morning I was screenshotting my readiness score and pasting it into a cloud chatbot to ask "should I train hard today?" It worked well — and then I realized I was voluntarily uploading my nightly HRV, resting heart rate, and body temperature history to answer a question a modern phone can answer entirely on-device.
+The story: every morning I was screenshotting my readiness score and pasting it into a cloud chatbot to ask "should I train hard today?" It worked well — and then I realized I was uploading my nightly HRV, resting heart rate, and body temperature history to answer a question a modern phone can answer entirely on-device.
 
-So I built the architecture I wanted to exist:
+So I built the architecture I wanted to exist — where the AI comes to the data, not the other way around:
 
-→ A typed, coroutine-first Kotlin client for the complete Oura API v2 (OAuth2 with auto-refresh, every usercollection endpoint, transparent pagination)
+🧠 Real neural inference on the phone: a readiness forecaster exported from PyTorch to ExecuTorch (.pte) predicts tomorrow's readiness score in milliseconds — offline, in airplane mode. The example app bundles the runtime and pre-exported model, so it works on first launch, and the forecast card shows exactly which engine answered: "neural · ExecuTorch."
 
-→ An on-device AI layer: sleep-debt accounting, HRV z-scores against your personal 14-night baseline, readiness trend analysis — feeding explainable heuristic insights plus a neural readiness forecaster running on ExecuTorch, PyTorch's mobile runtime
+📊 Wellness intelligence, not generic chatbot output: sleep-debt accounting, HRV z-scores against your personal 14-night baseline, readiness trend analysis — every insight is explainable and traceable to the biometric feature that triggered it. No LLM vibes, no hallucinated health advice.
 
-→ A Jetpack Compose example app (Material 3, score rings, trend charts, AI coach feed) with a demo mode that needs no ring and no account
+🔧 A complete typed Kotlin client for the Oura API v2 (OAuth2 with auto-refresh, every endpoint, transparent pagination) + a Jetpack Compose example app with a demo mode that needs no ring and no account.
 
-The design principle: raw biometrics never leave the device. Every insight is traceable to the data that triggered it. Everything runs offline in milliseconds.
+The design principle: raw biometrics never leave the device. On-device AI runtimes like ExecuTorch have quietly crossed the threshold where the privacy-respecting architecture is also the faster, offline-capable one — and wellness data deserves exactly that default.
 
-This is my contribution back to the open-source ecosystem that shaped my career — and a small proof that privacy-first health AI is no longer a compromise; it's the better architecture.
+This is my contribution back to the open-source ecosystem that shaped my career.
 
-Repo, docs, and a 2-minute setup: https://github.com/RanjithRagavan/Noctua
+Repo, docs, the PyTorch→ExecuTorch export script, and a 2-minute setup:
+https://github.com/RanjithRagavan/Noctua
 
-I'd genuinely value your feedback — especially from folks working in wearables, digital health, or on-device ML.
+I'd genuinely value your feedback — especially from folks working in on-device ML, digital health, or wearables.
 
-#AndroidDev #Kotlin #OnDeviceAI #ExecuTorch #DigitalHealth #OpenSource #Privacy #Wearables #JetpackCompose
+#OnDeviceAI #ExecuTorch #PyTorch #AndroidDev #Kotlin #DigitalHealth #Wearables #EdgeAI #OpenSource #Privacy
 ```
 
 ---
