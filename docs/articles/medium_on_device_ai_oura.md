@@ -8,7 +8,7 @@
 
 ---
 
-A few months ago I caught myself doing something odd: every morning I'd open the Oura app, screenshot my readiness score, and paste it into a chatbot to ask "should I train hard today?" It worked surprisingly well — and then it hit me: **I was voluntarily uploading my most intimate biometric history to a cloud LLM to answer a question a phone can answer locally.**
+A few months ago I caught myself doing something odd. My Oura app is great at measurement — every morning it hands me a readiness score — but it doesn't coach: it never answers the question I actually have, *"so should I train hard today, or recover?"* So every morning I'd paste my scores and biometrics into a cloud chatbot to get that answer. It worked surprisingly well — and then it hit me: **I was voluntarily uploading my most intimate biometric history to a cloud LLM to answer a question a phone can answer locally.**
 
 So I built the thing I wanted: **Noctua** 🦉 — an open-source Android SDK that combines a complete typed client for the Oura API v2 with an on-device AI layer that generates explainable wellness insights and predicts tomorrow's readiness score. All inference happens on-device. Nothing is uploaded.
 

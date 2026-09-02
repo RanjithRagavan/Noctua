@@ -20,11 +20,13 @@ the first X post and the LinkedIn post. `ai_coach.png` works for reply posts.
 **Post 1** *(attach dashboard.png)*
 
 ```
-I kept pasting my Oura readiness score into a cloud chatbot every morning.
+My Oura app tells me my readiness score every morning.
 
-Then it hit me: I was uploading my most sensitive biometric data to answer a question a phone can answer locally.
+What it never tells me: "should I train hard today, or recover?"
 
-So I built the alternative. Meet Noctua 🦉 — on-device AI wellness insights for Oura Ring, open source:
+So I was pasting my biometrics into a cloud chatbot every morning for coaching — uploading my most sensitive health data to answer a question a phone can answer locally.
+
+So I built the alternative. Meet Noctua 🦉 — on-device AI wellness coach for Oura Ring, open source:
 
 https://github.com/RanjithRagavan/Noctua
 ```
@@ -93,7 +95,7 @@ to the HN thread is fine and common.)*
 ```
 I just open-sourced something I've been building: Noctua 🦉 — an on-device AI wellness coach for the Oura Ring, powered by ExecuTorch, PyTorch's on-device runtime.
 
-The story: every morning I was screenshotting my readiness score and pasting it into a cloud chatbot to ask "should I train hard today?" It worked well — and then I realized I was uploading my nightly HRV, resting heart rate, and body temperature history to answer a question a modern phone can answer entirely on-device.
+The story: the Oura app is excellent at measurement — every morning it hands me a readiness score. What it doesn't do is coaching: it never answers "so should I train hard today, or recover?" For that, I found myself pasting my biometrics into a cloud AI chatbot every morning. It worked well — and then I realized I was uploading my nightly HRV, resting heart rate, and body temperature history to answer a question a modern phone can answer entirely on-device.
 
 So I built the architecture I wanted to exist — where the AI comes to the data, not the other way around:
 

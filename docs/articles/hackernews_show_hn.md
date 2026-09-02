@@ -71,9 +71,11 @@ this as the first comment on your own submission:
 
 ---
 
-Creator here. I built Noctua after catching myself pasting screenshots of my
-Oura readiness score into a cloud chatbot every morning — uploading my most
-sensitive biometric history to answer a question a phone can answer locally.
+Creator here. I built Noctua after noticing a gap: my Oura app measures
+brilliantly but doesn't coach — it tells me my readiness score every morning,
+never what to do about it ("train hard today, or recover?"). I was filling
+that gap by pasting my biometrics into a cloud chatbot — uploading my most
+sensitive health history to answer a question a phone can answer locally.
 
 The repo is three Gradle modules:
 

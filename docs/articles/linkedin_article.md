@@ -8,7 +8,7 @@
 
 **(Hero image: dashboard screenshot)**
 
-A few months ago, I noticed a habit I'd formed without thinking: every morning, I'd open my Oura app, screenshot my readiness score, and paste it into a cloud AI chatbot. *Should I train hard today, or recover?*
+A few months ago, I noticed a habit I'd formed without thinking. My Oura app is superb at measurement — every morning it hands me a readiness score — but it doesn't coach. It never answers the question I actually have: *should I train hard today, or recover?* So I'd take my scores and biometrics to a cloud AI chatbot and ask.
 
 The answers were genuinely useful. And then one morning the absurdity of it stopped me cold: to get advice about my body's most intimate signals — nightly heart-rate variability, resting heart rate, core temperature trends, sleep architecture — I was voluntarily shipping that entire history to someone else's server, someone else's model, someone else's terms of service.
 
