@@ -1,6 +1,7 @@
 package com.noctua.example.ui
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.noctua.ai.ExecuTorchForecaster
@@ -12,11 +13,15 @@ import com.noctua.ai.WellnessSnapshot
 import com.noctua.core.OuraClient
 import com.noctua.core.OuraException
 import com.noctua.example.demo.DemoData
+import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.TimeoutCancellationException
+import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withTimeout
 import java.io.File
 import java.time.LocalDate
 
@@ -66,15 +71,30 @@ class NoctuaViewModel(application: Application) : AndroidViewModel(application) 
         _state.update { it.copy(loading = true, error = null) }
         viewModelScope.launch {
             try {
-                val client = OuraClient.Builder().token(token).build()
+                val client = OuraClient.Builder()
+                    .token(token)
+                    .timeouts(connectSec = 10, readSec = 20)
+                    .build()
                 val start = LocalDate.now().minusDays(21).toString()
                 val end = LocalDate.now().toString()
-                val snapshot = WellnessSnapshot(
-                    readiness = client.dailyReadiness(start, end),
-                    sleep = client.dailySleep(start, end),
-                    activity = client.dailyActivity(start, end),
-                    sleepPeriods = client.sleep(start, end),
-                )
+
+                // Fetch the four collections concurrently; one overall 60s budget
+                // so the spinner can never outlive the user's patience.
+                val snapshot = withTimeout(60_000) {
+                    val readiness = async { client.dailyReadiness(start, end) }
+                    val sleep = async { client.dailySleep(start, end) }
+                    val activity = async { client.dailyActivity(start, end) }
+                    val periods = async { client.sleep(start, end) }
+                    WellnessSnapshot(
+                        readiness = readiness.await(),
+                        sleep = sleep.await(),
+                        activity = activity.await(),
+                        sleepPeriods = periods.await(),
+                    )
+                }
+                Log.i(TAG, "Connected: ${snapshot.readiness.size} readiness, " +
+                    "${snapshot.sleep.size} sleep, ${snapshot.activity.size} activity, " +
+                    "${snapshot.sleepPeriods.size} periods")
                 _state.update {
                     it.copy(
                         loading = false,
@@ -85,9 +105,26 @@ class NoctuaViewModel(application: Application) : AndroidViewModel(application) 
                     )
                 }
             } catch (e: OuraException.Unauthorized) {
+                Log.w(TAG, "Unauthorized", e)
                 _state.update { it.copy(loading = false, error = "Token rejected by Oura. Check it and retry.") }
+            } catch (e: OuraException.RateLimited) {
+                Log.w(TAG, "Rate limited", e)
+                _state.update { it.copy(loading = false, error = "Oura rate limit hit — wait a minute and retry.") }
             } catch (e: OuraException) {
+                Log.w(TAG, "Oura error", e)
                 _state.update { it.copy(loading = false, error = e.message) }
+            } catch (e: TimeoutCancellationException) {
+                Log.w(TAG, "Timed out", e)
+                _state.update { it.copy(loading = false, error = "Oura API is not responding (60s timeout). Check the emulator's network and retry.") }
+            } catch (e: CancellationException) {
+                throw e
+            } catch (e: Exception) {
+                // Never die silently — an uncaught exception here used to leave
+                // the spinner running forever with zero feedback.
+                Log.e(TAG, "Connect failed unexpectedly", e)
+                _state.update {
+                    it.copy(loading = false, error = "Unexpected error: ${e.message ?: e.javaClass.simpleName}")
+                }
             }
         }
     }
@@ -115,6 +152,7 @@ class NoctuaViewModel(application: Application) : AndroidViewModel(application) 
     }
 
     companion object {
+        private const val TAG = "NoctuaViewModel"
         private const val MODEL_FILE = "readiness_forecaster.pte"
     }
 }
