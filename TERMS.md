@@ -41,8 +41,8 @@ the app, including decisions made based on its insights.
 ## 6. Source code license
 
 The Noctua source code is licensed separately under the
-[Apache License 2.0](LICENSE). These Terms of Service govern use of the
-application; they do not restrict your rights under the Apache-2.0 license.
+[MIT License](LICENSE). These Terms of Service govern use of the
+application; they do not restrict your rights under the MIT license.
 
 ## 7. Independence
 

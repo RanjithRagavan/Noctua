@@ -10,7 +10,7 @@ readiness forecast — **without your health data ever leaving the phone**.
 [![Kotlin](https://img.shields.io/badge/Kotlin-2.0-7F52FF?logo=kotlin&logoColor=white)](https://kotlinlang.org)
 [![Compose](https://img.shields.io/badge/Jetpack%20Compose-Material%203-4285F4?logo=jetpackcompose&logoColor=white)](https://developer.android.com/jetpack/compose)
 [![ExecuTorch](https://img.shields.io/badge/On--device%20AI-ExecuTorch-EE4C2C?logo=pytorch&logoColor=white)](https://pytorch.org/executorch/)
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 ---
 
@@ -201,7 +201,7 @@ contribution. Run `./gradlew test` before submitting.
 
 ## License
 
-[Apache 2.0](LICENSE) — use it in personal or commercial apps.
+[MIT](LICENSE) — use it in personal or commercial apps.
 
 *Noctua is an independent open-source project and is not affiliated with,
 endorsed by, or sponsored by Ōura Health Oy.*

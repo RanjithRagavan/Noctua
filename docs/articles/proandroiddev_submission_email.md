@@ -24,7 +24,7 @@ https://medium.com/@iam.ranjith.ragavan/on-device-ai-coach-for-my-oura-ring-475f
 - ✅ Spell-checked and structured (problem → approach → architecture → code → conclusion)
 - ✅ Happy to convert the longer code snippets into GitHub gists — just say the word and I'll update the post
 
-The companion open-source project is at https://github.com/RanjithRagavan/Noctua (Apache-2.0).
+The companion open-source project is at https://github.com/RanjithRagavan/Noctua (MIT).
 
 If it's a good fit, I'd be glad to be added as a writer and submit it to the publication. And of course, happy to make any edits your review suggests.
 

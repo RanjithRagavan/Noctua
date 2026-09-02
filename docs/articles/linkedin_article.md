@@ -87,7 +87,7 @@ I'll be transparent about what it is and isn't: the shipped weights encode a sen
 
 On-device ML runtimes — ExecuTorch on Android, Core ML on iOS — have quietly crossed the threshold where the privacy-respecting architecture is also the *faster, cheaper, offline-capable* one. The trade-offs that once justified routing health data through cloud inference are evaporating. What remains is habit.
 
-Health data deserves a different default: **local first, shared only with explicit and revocable consent.** Noctua is my proof-of-craft for that principle — 16 passing unit tests, a real APK, real screenshots, Apache-2.0, issues and PRs open.
+Health data deserves a different default: **local first, shared only with explicit and revocable consent.** Noctua is my proof-of-craft for that principle — 16 passing unit tests, a real APK, real screenshots, MIT-licensed, issues and PRs open.
 
 If you work in wearables, digital health, or on-device ML, I'd genuinely value your scrutiny. The heuristics in `HeuristicInsightEngine` are deliberately readable — if you have better evidence for a threshold, that's a perfect first contribution.
 
