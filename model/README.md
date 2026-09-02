@@ -1,13 +1,23 @@
 # Noctua on-device model
 
-`export_readiness_forecaster.py` exports a tiny MLP (8 → 32 → 16 → 1) to an
-ExecuTorch `.pte` program that predicts **tomorrow's readiness score** from
+`export_readiness_forecaster.py` (also available as the step-by-step notebook
+`export_readiness_forecaster.ipynb`) exports a tiny MLP (8 → 32 → 16 → 1) to
+an ExecuTorch `.pte` program that predicts **tomorrow's readiness score** from
 normalized Oura features — fully on-device, ~1 MB RAM, milliseconds of CPU.
 
 ```bash
+python -m venv .venv && source .venv/bin/activate
 pip install torch executorch
 python export_readiness_forecaster.py
 # → readiness_forecaster.pte
+```
+
+A **pre-exported, runtime-validated** program is checked in at
+[`sample/readiness_forecaster.pte`](sample/readiness_forecaster.pte) (~6 KB).
+Validation output from the ExecuTorch runtime:
+
+```
+neutral input → 75.1     strong input → 87.4     strained input → 66.3
 ```
 
 Ship the `.pte` in your app (assets or internal storage) and wire it up:

@@ -55,7 +55,7 @@ def export() -> None:
     y = (78.0 + x @ w + torch.randn(2048) * 2.0).unsqueeze(1)
 
     opt = torch.optim.Adam(model.parameters(), lr=3e-3)
-    for epoch in range(300):
+    for epoch in range(1500):
         opt.zero_grad()
         loss = nn.functional.mse_loss(model(x), y)
         loss.backward()

@@ -11,3 +11,6 @@ local.properties
 **/build/
 *.pte
 !model/sample/*.pte
+model/.venv/
+model/__pycache__/
+.ipynb_checkpoints/
