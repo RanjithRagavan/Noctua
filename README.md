@@ -148,6 +148,10 @@ val ai = NoctuaAI(forecaster = ExecuTorchForecaster(pteFile.absolutePath))
 If the ExecuTorch runtime or model file is absent, Noctua silently falls back
 to the bundled linear model — the app never breaks.
 
+📖 **Deep dive:** [docs/HOW_THE_AI_WORKS.md](docs/HOW_THE_AI_WORKS.md) traces
+one real data point from Oura cloud to on-screen forecast — every formula and
+every layer of the .pte execution stack.
+
 ## API coverage
 
 | Endpoint | `OuraClient` method | Scope |
