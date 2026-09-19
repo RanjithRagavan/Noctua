@@ -11,7 +11,7 @@ import org.junit.Test
 
 class FeatureExtractorTest {
 
-    private fun sleepPeriod(day: String, totalSeconds: Int, hrv: Int) = SleepPeriod(
+    private fun sleepPeriod(day: String, totalSeconds: Int?, hrv: Int?) = SleepPeriod(
         day = day,
         type = "long_sleep",
         totalSleepDuration = totalSeconds,
@@ -38,6 +38,32 @@ class FeatureExtractorTest {
     }
 
     @Test
+    fun `sleep debt ignores missing nights between available nights`() {
+        val periods = listOf(
+            sleepPeriod("2026-08-01", 6 * 3600, 60),
+            sleepPeriod("2026-08-02", null, null),
+            sleepPeriod("2026-08-03", 7 * 3600, 60),
+            sleepPeriod("2026-08-04", null, null),
+            sleepPeriod("2026-08-05", 8 * 3600, 60),
+        )
+
+        assertEquals(3f, FeatureExtractor.sleepDebtHours(periods, 8 * 3600), 0.01f)
+    }
+
+    @Test
+    fun `sleep debt clamps at both limits`() {
+        val shortNights = (1..7).map {
+            sleepPeriod("2026-08-%02d".format(it), 0, 60)
+        }
+        val longNights = (1..7).map {
+            sleepPeriod("2026-08-%02d".format(it), 16 * 3600, 60)
+        }
+
+        assertEquals(24f, FeatureExtractor.sleepDebtHours(shortNights, 8 * 3600), 0f)
+        assertEquals(-24f, FeatureExtractor.sleepDebtHours(longNights, 8 * 3600), 0f)
+    }
+
+    @Test
     fun `hrv z-score detects baseline deviation`() {
         val periods = (1..14).map { day ->
             sleepPeriod("2026-08-%02d".format(day), totalSeconds = 8 * 3600, hrv = 60 + day % 3)
@@ -56,10 +82,27 @@ class FeatureExtractorTest {
     }
 
     @Test
+    fun `hrv z-score needs five nights and handles a constant baseline`() {
+        val fourNights = (1..4).map {
+            sleepPeriod("2026-08-%02d".format(it), 8 * 3600, 60)
+        }
+        val fiveNights = fourNights + sleepPeriod("2026-08-05", 8 * 3600, 60)
+
+        assertNull(FeatureExtractor.hrvZScore(fourNights))
+        assertEquals(0f, FeatureExtractor.hrvZScore(fiveNights)!!, 0f)
+    }
+
+    @Test
     fun `trend detects falling readiness`() {
         val t = FeatureExtractor.trend(listOf(90f, 87f, 84f, 81f, 78f))
         assertNotNull(t)
         assertTrue(t!! < -2.5f)
+    }
+
+    @Test
+    fun `trend requires three points and computes with exactly three`() {
+        assertNull(FeatureExtractor.trend(listOf(1f, 2f)))
+        assertEquals(1f, FeatureExtractor.trend(listOf(1f, 2f, 3f))!!, 0.001f)
     }
 
     @Test
