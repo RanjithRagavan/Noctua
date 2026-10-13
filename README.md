@@ -211,13 +211,28 @@ exactly what demo mode renders.
 - [ ] Webhook subscription helpers (`/v2/webhook/subscription`)
 - [ ] Compose Multiplatform + iOS (KMP) port of `noctua-ai`
 
+## Community & traction
+
+The [launch post on LinkedIn](https://www.linkedin.com/posts/about-ranjith_ondeviceai-executorch-pytorch-share-7500896960103591936-2xVx/)
+drew hands-on technical discussion from the on-device ML community — including
+a CTO who built a similar wearable product and an engineer working on
+[react-native-executorch](https://github.com/software-mansion/react-native-executorch)
+(React Native bindings for the same runtime Noctua uses).
+
+Community feedback is already shaping the roadmap:
+
+- Travel + DST day-boundary handling → [issue #1](https://github.com/RanjithRagavan/Noctua/issues/1)
+- On-device personalization (nightly fine-tune) → [issue #2](https://github.com/RanjithRagavan/Noctua/issues/2)
+
 ## Contributing
 
 Issues and PRs welcome — see [CONTRIBUTING.md](CONTRIBUTING.md) for setup,
-ground rules (privacy is the product), and good first contributions. The
-heuristics in `HeuristicInsightEngine` are deliberately readable — improving
-them with better evidence is a great first contribution. Run `./gradlew test`
-before submitting.
+ground rules (privacy is the product), and good first contributions. Several
+[`good first issue`](https://github.com/RanjithRagavan/Noctua/labels/good%20first%20issue)
+tickets are open (CI setup, edge-case tests, new heuristic rules, webhook
+helpers). The heuristics in `HeuristicInsightEngine` are deliberately
+readable — improving them with better evidence is a great first contribution.
+Run `./gradlew test` before submitting.
 
 ## License
 
