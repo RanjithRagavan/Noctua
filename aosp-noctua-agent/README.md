@@ -322,6 +322,9 @@ freeze/version the AIDL interface instead of using the demo's `unstable: true`.
   before running larger models or scheduling background inference.
 - Never log raw Oura responses, OAuth tokens, feature history, or health text.
 
+For the complete 30-minute talk, timed speaker script, presentation setup, and
+fallback plan, see the [AOSP talk and demo runbook](../docs/AOSP_TALK_RUNBOOK.md).
+
 ## 7. Four-minute live demo script
 
 1. **30 s — identify the current process.** On the dashboard, show the execution
