@@ -11,6 +11,9 @@ local.properties
 **/build/
 *.pte
 !model/sample/*.pte
+!aosp-noctua-agent/model/*.pte
+aosp-noctua-agent/out/
+aosp-noctua-agent/prebuilts/
 model/.venv/
 model/__pycache__/
 .ipynb_checkpoints/

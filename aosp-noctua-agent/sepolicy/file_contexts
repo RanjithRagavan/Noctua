@@ -1,0 +1,1 @@
+/system/bin/noctua_agent    u:object_r:noctua_agent_exec:s0

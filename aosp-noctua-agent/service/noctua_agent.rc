@@ -1,0 +1,5 @@
+service noctua_agent /system/bin/noctua_agent
+    class late_start
+    user system
+    group system
+    seclabel u:r:noctua_agent:s0

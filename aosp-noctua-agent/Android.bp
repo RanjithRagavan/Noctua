@@ -1,0 +1,77 @@
+// Noctua AOSP demo. Build the ExecuTorch prebuilts first with
+// scripts/build_executorch.sh, then add this module to PRODUCT_PACKAGES.
+
+aidl_interface {
+    name: "noctua_agent_aidl",
+    srcs: [
+        "service/aidl/com/noctua/aosp/ForecastResult.aidl",
+        "service/aidl/com/noctua/aosp/INoctuaAgent.aidl",
+    ],
+    unstable: true,
+    backend: {
+        cpp: { enabled: true },
+        java: { enabled: true },
+        ndk: { enabled: false },
+        rust: { enabled: false },
+    },
+}
+
+cc_prebuilt_library_shared {
+    name: "libexecutorch",
+    arch: {
+        arm64: { srcs: ["prebuilts/arm64/libexecutorch.so"] },
+        x86_64: { srcs: ["prebuilts/x86_64/libexecutorch.so"] },
+    },
+}
+
+cc_prebuilt_library_shared {
+    name: "libexecutorch_portable_ops",
+    arch: {
+        arm64: { srcs: ["prebuilts/arm64/libexecutorch_portable_ops.so"] },
+        x86_64: { srcs: ["prebuilts/x86_64/libexecutorch_portable_ops.so"] },
+    },
+}
+
+prebuilt_etc {
+    name: "noctua_model",
+    src: "model/readiness_forecaster.pte",
+    filename: "readiness_forecaster.pte",
+    sub_dir: "noctua",
+}
+
+cc_binary {
+    name: "noctua_agent",
+    srcs: [
+        "service/src/main.cpp",
+        "service/src/NoctuaAgentService.cpp",
+    ],
+    local_include_dirs: [
+        "service/include",
+        "prebuilts/include",
+    ],
+    static_libs: ["noctua_agent_aidl-cpp"],
+    shared_libs: [
+        "libbase",
+        "libbinder",
+        "libexecutorch",
+        "libexecutorch_portable_ops",
+        "liblog",
+        "libutils",
+    ],
+    // Keep the portable operator library loaded: its static registration is
+    // required even though noctua_agent does not call its symbols directly.
+    ldflags: ["-Wl,--no-as-needed"],
+    init_rc: ["service/noctua_agent.rc"],
+    required: ["noctua_model"],
+}
+
+cc_binary {
+    name: "noctua_client",
+    srcs: ["client/noctua_client.cpp"],
+    static_libs: ["noctua_agent_aidl-cpp"],
+    shared_libs: [
+        "libbase",
+        "libbinder",
+        "libutils",
+    ],
+}

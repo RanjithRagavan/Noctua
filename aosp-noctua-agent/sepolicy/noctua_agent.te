@@ -1,0 +1,12 @@
+type noctua_agent, domain;
+type noctua_agent_exec, exec_type, file_type;
+
+init_daemon_domain(noctua_agent)
+binder_use(noctua_agent)
+add_service(noctua_agent, noctua_agent_service)
+
+# The model is read-only and lives on the verified system partition.
+# mmap support is required by ExecuTorch's default Module loader.
+allow noctua_agent system_file:file { r_file_perms map };
+
+# Deliberately no net_domain: inference has no network capability.

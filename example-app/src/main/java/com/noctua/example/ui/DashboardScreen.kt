@@ -32,7 +32,10 @@ import com.noctua.example.ui.theme.MintGreen
 import com.noctua.example.ui.theme.WarmAmber
 
 @Composable
-fun DashboardScreen(state: NoctuaUiState) {
+fun DashboardScreen(
+    state: NoctuaUiState,
+    onShowArchitecture: () -> Unit,
+) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -47,6 +50,8 @@ fun DashboardScreen(state: NoctuaUiState) {
                 color = MaterialTheme.colorScheme.tertiary,
             )
         }
+
+        ExecutionPathCard(state, onClick = onShowArchitecture)
 
         ScoreRingRow(state)
 

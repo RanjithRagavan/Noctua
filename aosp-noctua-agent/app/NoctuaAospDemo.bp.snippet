@@ -1,0 +1,10 @@
+// Add to the Soong module that builds the AOSP variant of Noctua.
+// Point srcs at your existing Kotlin sources and include BinderForecaster.kt.
+android_app {
+    name: "NoctuaAospDemo",
+    srcs: ["src/**/*.kt"],
+    static_libs: ["noctua_agent_aidl-java"],
+    platform_apis: true,
+    certificate: "platform",
+    privileged: true,
+}

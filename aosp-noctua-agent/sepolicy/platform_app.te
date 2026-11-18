@@ -1,0 +1,4 @@
+# Demo access for the platform-signed Noctua app only. Do not grant this to
+# untrusted_app: that would expose the service to every third-party app.
+allow platform_app noctua_agent_service:service_manager find;
+binder_call(platform_app, noctua_agent)

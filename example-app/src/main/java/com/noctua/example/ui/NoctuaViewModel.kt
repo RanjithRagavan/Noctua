@@ -25,12 +25,25 @@ import kotlinx.coroutines.withTimeout
 import java.io.File
 import java.time.LocalDate
 
+enum class InferenceHost {
+    APP_PROCESS,
+    AOSP_SERVICE,
+    LINEAR_FALLBACK,
+}
+
+data class ForecasterInfo(
+    val forecaster: ReadinessForecaster,
+    val label: String,
+    val host: InferenceHost,
+)
+
 data class NoctuaUiState(
     val loading: Boolean = true,
     val demoMode: Boolean = true,
     val error: String? = null,
     /** Which forecaster produced the prediction, e.g. "neural · ExecuTorch" or "linear fallback". */
     val forecasterLabel: String = "",
+    val inferenceHost: InferenceHost = InferenceHost.APP_PROCESS,
     val snapshot: WellnessSnapshot = WellnessSnapshot(),
     val report: NoctuaReport? = null,
 )
@@ -38,11 +51,9 @@ data class NoctuaUiState(
 class NoctuaViewModel(application: Application) : AndroidViewModel(application) {
 
     /** Loads the bundled .pte and prefers the ExecuTorch neural forecaster. */
-    private val forecasterInfo: Pair<ReadinessForecaster, String> by lazy {
-        loadForecaster(application)
-    }
+    private val forecasterInfo: ForecasterInfo by lazy { loadForecaster(application) }
 
-    private val ai: NoctuaAI by lazy { NoctuaAI(forecaster = forecasterInfo.first) }
+    private val ai: NoctuaAI by lazy { NoctuaAI(forecaster = forecasterInfo.forecaster) }
 
     private val _state = MutableStateFlow(NoctuaUiState())
     val state: StateFlow<NoctuaUiState> = _state.asStateFlow()
@@ -59,7 +70,8 @@ class NoctuaViewModel(application: Application) : AndroidViewModel(application) 
             it.copy(
                 loading = false,
                 demoMode = true,
-                forecasterLabel = forecasterInfo.second,
+                forecasterLabel = forecasterInfo.label,
+                inferenceHost = forecasterInfo.host,
                 snapshot = snapshot,
                 report = ai.analyze(snapshot),
             )
@@ -99,7 +111,8 @@ class NoctuaViewModel(application: Application) : AndroidViewModel(application) 
                     it.copy(
                         loading = false,
                         demoMode = false,
-                        forecasterLabel = forecasterInfo.second,
+                        forecasterLabel = forecasterInfo.label,
+                        inferenceHost = forecasterInfo.host,
                         snapshot = snapshot,
                         report = ai.analyze(snapshot),
                     )
@@ -134,7 +147,7 @@ class NoctuaViewModel(application: Application) : AndroidViewModel(application) 
      * a real file path) and returns the neural forecaster when usable,
      * otherwise the zero-dependency linear fallback.
      */
-    private fun loadForecaster(app: Application): Pair<ReadinessForecaster, String> = runCatching {
+    private fun loadForecaster(app: Application): ForecasterInfo = runCatching {
         val file = File(app.filesDir, MODEL_FILE)
         if (!file.exists()) {
             app.assets.open(MODEL_FILE).use { input ->
@@ -143,12 +156,20 @@ class NoctuaViewModel(application: Application) : AndroidViewModel(application) 
         }
         val neural = ExecuTorchForecaster(file.absolutePath)
         if (neural.isAvailable()) {
-            neural to "neural · ExecuTorch"
+            ForecasterInfo(neural, "neural · ExecuTorch", InferenceHost.APP_PROCESS)
         } else {
-            LinearHeuristicForecaster() to "linear fallback"
+            ForecasterInfo(
+                LinearHeuristicForecaster(),
+                "linear fallback",
+                InferenceHost.LINEAR_FALLBACK,
+            )
         }
     }.getOrElse {
-        LinearHeuristicForecaster() to "linear fallback"
+        ForecasterInfo(
+            LinearHeuristicForecaster(),
+            "linear fallback",
+            InferenceHost.LINEAR_FALLBACK,
+        )
     }
 
     companion object {

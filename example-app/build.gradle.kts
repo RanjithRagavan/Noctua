@@ -19,6 +19,7 @@ val ouraClientId = localProps.getProperty("OURA_CLIENT_ID", "").orEmpty()
 android {
     namespace = "com.noctua.example"
     compileSdk = 35
+    buildToolsVersion = "35.0.0"
 
     defaultConfig {
         applicationId = "com.noctua.example"

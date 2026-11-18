@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountTree
 import androidx.compose.material.icons.filled.AutoAwesome
 import androidx.compose.material.icons.filled.Dashboard
 import androidx.compose.material.icons.filled.Link
@@ -64,6 +65,7 @@ class MainActivity : ComponentActivity() {
 
 private const val ROUTE_DASHBOARD = "dashboard"
 private const val ROUTE_INSIGHTS = "insights"
+private const val ROUTE_ARCHITECTURE = "architecture"
 private const val ROUTE_CONNECT = "connect"
 
 @Composable
@@ -89,6 +91,12 @@ fun NoctuaApp(viewModel: NoctuaViewModel) {
                     label = { Text("AI Coach") },
                 )
                 NavigationBarItem(
+                    selected = currentRoute == ROUTE_ARCHITECTURE,
+                    onClick = { navController.navigate(ROUTE_ARCHITECTURE) { popUpTo(ROUTE_DASHBOARD) } },
+                    icon = { Icon(Icons.Default.AccountTree, contentDescription = "AOSP architecture") },
+                    label = { Text("AOSP") },
+                )
+                NavigationBarItem(
                     selected = currentRoute == ROUTE_CONNECT,
                     onClick = { navController.navigate(ROUTE_CONNECT) { popUpTo(ROUTE_DASHBOARD) } },
                     icon = { Icon(Icons.Default.Link, contentDescription = "Connect") },
@@ -99,8 +107,18 @@ fun NoctuaApp(viewModel: NoctuaViewModel) {
     ) { padding ->
         Box(modifier = Modifier.fillMaxSize().padding(padding)) {
             NavHost(navController = navController, startDestination = ROUTE_DASHBOARD) {
-                composable(ROUTE_DASHBOARD) { DashboardScreen(state) }
+                composable(ROUTE_DASHBOARD) {
+                    DashboardScreen(
+                        state = state,
+                        onShowArchitecture = {
+                            navController.navigate(ROUTE_ARCHITECTURE) { popUpTo(ROUTE_DASHBOARD) }
+                        },
+                    )
+                }
                 composable(ROUTE_INSIGHTS) { InsightsScreen(state) }
+                composable(ROUTE_ARCHITECTURE) {
+                    com.noctua.example.ui.ArchitectureScreen(state)
+                }
                 composable(ROUTE_CONNECT) {
                     ConnectScreen(
                         state = state,

@@ -60,8 +60,23 @@ graph TD
 |---|---|
 | **`noctua-core`** | Pure-Kotlin Oura API v2 client — OAuth2 helpers, auto-refreshing tokens, all `usercollection` endpoints, pagination, sandbox support. Runs on Android **and** any JVM backend. |
 | **`noctua-ai`** | On-device intelligence: feature extraction (sleep debt, HRV z-score vs personal baseline, readiness trend), explainable heuristic insights, and a neural readiness forecaster bridged to **ExecuTorch**. |
-| **`example-app`** | Material 3 Compose app — score rings, 14-day readiness trend, AI coach feed, OAuth/token connect flow, and a built-in **demo mode** that needs no Oura account. |
+| **`example-app`** | Material 3 Compose app — score rings, 14-day readiness trend, AI coach feed, OAuth/token connect flow, and a built-in **demo mode** that needs no Oura account. The dashboard identifies the actual inference process, and the **AOSP** tab explains the platform boundary. |
 | **`model/`** | PyTorch → ExecuTorch export script for the readiness forecaster. |
+| **`aosp-noctua-agent/`** | AOSP integration demo — AIDL, native ExecuTorch C++ service, init, Soong, SELinux, shell client, Kotlin Binder adapter, and framework policy/action coordinator. |
+
+## AOSP platform demo
+
+The example app makes the execution boundary visible: **APP PROCESS** means the
+ordinary app-local AAR/JNI path; **AOSP NATIVE SERVICE** means the platform build
+is calling the native `noctua_agent` daemon through Binder. Open the **AOSP** tab
+for the process diagram, unchanged model contract, agent loop, and proof commands.
+
+![AOSP execution architecture and native service boundary](docs/screenshots/aosp_architecture.png)
+
+Follow the [AOSP demo guide](aosp-noctua-agent/README.md) for the native runtime
+build, custom-image integration, security rules, and four-minute talk script.
+The standard Android Studio APK remains app-local; the native service requires
+an AOSP build, platform signing, and SELinux integration.
 
 ## Quickstart
 
@@ -185,8 +200,9 @@ cd Noctua
 
 The app boots into **demo mode** with a deterministic 21-day dataset, so you
 can evaluate the full UX — score rings, trend chart, forecast card, AI coach —
-before connecting a real ring. The [screenshots above](#screenshots) show
-exactly what demo mode renders.
+before connecting a real ring. The dashboard identifies the actual inference
+host, and **View AOSP architecture** opens the platform-focused walkthrough.
+The [screenshots above](#screenshots) show exactly what demo mode renders.
 
 ### Connect your own Oura account (optional)
 
